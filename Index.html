@@ -93,8 +93,7 @@
     }
 
     function searchItem(iterator2) {
-      var searchValue = document.getElementById("item" + iterator2);
-      console.log(searchItem);
+      var searchValue = $('#table').find('td:eq(0)').html();
       for (var i = 0; i < products.length; i++) {
         if (products[i].item == searchValue) {
           return products[i].suggestion;
