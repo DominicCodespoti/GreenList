@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  </head>
+
+  <h1>Welcome to Green Grocer!</h1>
+  <p>Please enter an item: </p>
+  Item Name: <input type="text" id="additem">
+  <button onclick="addItem()" id="additembutton"></button>
+  <table id="table">
+
+  </table>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+    let products = [
+      {
+        "item": "Toothbrush",
+        "suggestion": "Bamboo toothbrush"
+      },
+      {
+        "item": "Nappies",
+        "suggestion": "Reusable cloth"
+      },
+      {
+        "item": "Milk",
+        "suggestion": "Glass bottle organic milk"
+      },
+      {
+        "item": "Tea Bags",
+        "suggestion": "Twinnings bags"
+      },
+      {
+        "item": "Coffee Pods",
+        "suggestion": "Ground coffee"
+      },
+      {
+        "item": "Straws",
+        "suggestion": "Paper or metal straws"
+      },
+      {
+        "item": "Eggs",
+        "suggestion": "Free range organic eggs"
+      },
+      {
+        "item": "Dishwashing Liquid",
+        "suggestion": "Earth Choice brand"
+      },
+      {
+        "item": "Oranges",
+        "suggestion": "Buy them loose without the mesh bag"
+      },
+      {
+        "item": "Shampoo and Conditioner",
+        "suggestion": "Sukin brand"
+      },
+      {
+        "item": "Toilet Paper",
+        "suggestion": "icare brand"
+      },
+      {
+        "item": "Party Cups",
+        "suggestion": "Globelet branded biodegradeable cups"
+      },
+      {
+        "item": "Bin Bag",
+        "suggestion": "BioBag bag liners"
+      },
+      {
+        "item": "Cling Wrap",
+        "suggestion": "Beezewax food wrap"
+      },
+      {
+        "item": "Disposable Cutlery",
+        "suggestion": "Ever Eco Bamboo cutlery set"
+      }
+    ];
+
+    var itemArray = [];
+    var iterator = 0;
+
+    function tipAndAlternative(iterator2) {
+      var item = searchItem(iterator2);
+      var markup = '<tr id="tip' + iterator2 + '" onclick=$(this).remove()><td>' + item + '</td></tr>';
+      if ($('#tip' + iterator2).length === 0) {
+        $('#item' + iterator2).after(markup);
+        console.log($('#tip' + iterator2).length);
+      }
+    }
+
+    function searchItem(iterator2) {
+      var searchValue = document.getElementById("item" + iterator2);
+      console.log(searchItem);
+      for (var i = 0; i < products.length; i++) {
+        if (products[i].item == searchValue) {
+          return products[i].suggestion;
+        }
+      }
+    };
+
+    function addItem() {
+      var item = document.getElementById("additem").value;
+      itemArray.push(item);
+      console.log(itemArray);
+      var markup = '<tr id="item' + iterator + '"onclick=tipAndAlternative(' + iterator + ')><td>' + item + '</td></tr>';
+      $('#table').append(markup)
+      iterator++;
+    }
+
+  </script>
+
+</body>
+
+</html>
