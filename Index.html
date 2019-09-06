@@ -22,9 +22,6 @@
 
   <h1>Welcome to Green Grocer!</h1>
 
-  <div id="myDiv">
-  </div>
-
   <p>Please enter an item:</p>
 
   <div class="ui-widget">
@@ -33,7 +30,6 @@
     <input type="text" id="tags" name="addItem" placeholder="Please Enter Your Item (e.g Toothpaste)" size=30>
     <button onclick="addItem()" id="additembutton"></button>
   </div>
-
   <table id="table" border="1">
 
   </table>
@@ -116,20 +112,18 @@
     ];
 
     var itemArray = [];
-    var iterator = 0;
+    var i = 0;
 
     function createAutocompleteArray() {
       var productList = [];
       for (var i = 0; i < products.length; i++) {
         productList.push(products[i].item);
       }
-      console.log(productList);
       return productList;
     }
 
     $(function () {
       var availableTags = createAutocompleteArray();
-      console.log("potato");
       $("#tags").autocomplete({
         source: availableTags,
         messages: {
@@ -139,30 +133,30 @@
       });
     });
 
-    function tipAndAlternative(iterator2) {
-      var item = searchItem(iterator2).suggestion;
-      var tip2 = searchItem(iterator2).tips;
-      var markup = '<tr id="tip' + iterator2 + '" ><td onclick=replaceString(' + iterator2 + ')>' + item + '</td><td>' + tip2 + '</td><td><input type="button" onclick=deleteThing(' + iterator2 + ')></td></tr>';
-      if ($('#tip' + iterator2).length === 0) {
-        $('#item' + iterator2).after(markup);
+    function tipAndAlternative(i) {
+      var suggestion = searchItem(i).suggestion;
+      var tip = searchItem(i).tips;
+      var markup = '<tr id="tip' + i + '" ><td onclick=replaceString(' + i + ')>' + suggestion + '</td><td>' + tip + '</td><td><input type="button" onclick=deleteThing(' + i + ')></td></tr>';
+      if ($('#tip' + i).length === 0) {
+        $('#item' + i).after(markup);
       }
     }
 
-    function deleteThing(iterator2) {
-      $('#tip' + iterator2).find('td:eq(0)').remove();
-      $('#tip' + iterator2).find('td:eq(0)').remove();
-      $('#tip' + iterator2).find('td:eq(0)').remove();
-      $('#tip' + iterator2).remove();
+    function deleteThing(i) {
+      $('#tip' + i).find('td:eq(0)').remove();
+      $('#tip' + i).find('td:eq(0)').remove();
+      $('#tip' + i).find('td:eq(0)').remove();
+      $('#tip' + i).remove();
     }
 
-    function replaceString(iterator2) {
-      $('#item' + iterator2).find('td:eq(0)').text(searchItem(iterator2).suggestion);
-      $('#tip' + iterator2).find('td:eq(0)').remove();
-      $('#tip' + iterator2).find('td:eq(0)').remove();
-      $('#tip' + iterator2).find('td:eq(0)').remove();
-      $('#tip' + iterator2).remove();
-      $('#item' + iterator2).removeClass();
-      $('#item' + iterator2).addClass("greenborder");
+    function replaceString(i) {
+      $('#item' + i).find('td:eq(0)').text(searchItem(i).suggestion);
+      $('#tip' + i).find('td:eq(0)').remove();
+      $('#tip' + i).find('td:eq(0)').remove();
+      $('#tip' + i).find('td:eq(0)').remove();
+      $('#tip' + i).remove();
+      $('#item' + i).removeClass();
+      $('#item' + i).addClass("greenborder");
     }
 
     function searchItemAuto() {
@@ -175,9 +169,8 @@
       }
     };
 
-    function searchItem(iterator2) {
-      var searchValue = $('#item' + iterator2).find('td:eq(0)').html();
-      console.log(searchValue);
+    function searchItem(i) {
+      var searchValue = $('#item' + i).find('td:eq(0)').html();
       for (var i = 0; i < products.length; i++) {
         if (products[i].item == searchValue) {
           return products[i];
@@ -188,14 +181,12 @@
     function addItem() {
       var item = document.getElementById("tags").value;
       itemArray.push(item);
-      console.log(itemArray);
-      var markup = '<tr id="item' + iterator + '"><td onclick=tipAndAlternative(' + iterator + ')>' + item + '</td><td><button onclick=$(this).parent().parent().remove()>X</button></td><td><input type ="checkbox"></td></tr>';
+      var markup = '<tr id="item' + i + '"><td onclick=tipAndAlternative(' + i + ')>' + item + '</td><td><button onclick=$(this).parent().parent().remove()>X</button></td><td><input type ="checkbox"></td></tr>';
       $('#table').append(markup)
-      if (searchItem(iterator)) {
-        $('#item' + iterator).addClass("green");
-        console.log($('#item' + iterator));
+      if (searchItem(i)) {
+        $('#item' + i).addClass("green");
       }
-      iterator++;
+      i++;
     }
 
   </script>
