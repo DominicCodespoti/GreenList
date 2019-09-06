@@ -90,13 +90,13 @@
     function tipAndAlternative(iterator2) {
       var item = searchItem(iterator2).suggestion;
       var tip2 = searchItem(iterator2).tips;
-      var markup = '<tr id="tip' + iterator2 + '" ><td onclick=replaceString(' + iterator2 + ')>' + item + '</td><td>' + tip2 + '</td><td><input type="button" onclick=fuckThis(' + iterator2 + ')></td></tr>';
+      var markup = '<tr id="tip' + iterator2 + '" ><td onclick=replaceString(' + iterator2 + ')>' + item + '</td><td>' + tip2 + '</td><td><input type="button" onclick=deleteThing(' + iterator2 + ')></td></tr>';
       if ($('#tip' + iterator2).length === 0) {
         $('#item' + iterator2).after(markup);
       }
     }
 
-    function fuckThis(iterator2) {
+    function deleteThing(iterator2) {
       $('#tip' + iterator2).find('td:eq(0)').remove();
       $('#tip' + iterator2).find('td:eq(0)').remove();
       $('#tip' + iterator2).find('td:eq(0)').remove();
