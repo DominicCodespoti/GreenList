@@ -12,6 +12,13 @@
 html {
 font-family: "Roboto";
 }
+h3 {
+ font-family: "Palatino";
+text-transform: capitalize;
+ font-style: italic;
+font-weight: 600;
+letter-spacing: 5px;
+}
 body {
 text-transform: uppercase;
   text-align:center;
@@ -38,7 +45,7 @@ width: 10em;
 
 }
 .header {
-
+  
 }
 .adding {
   margin: 3em 0 3em 0;
@@ -75,7 +82,7 @@ display: inline-grid;
 }
 
 .list table .greenborder {
-border: 1px solid #9DD2BF; !important
+border: 2px solid #9DD2BF; !important
 }
 .list table .green {
 background-color: #9DD2BF; !important
