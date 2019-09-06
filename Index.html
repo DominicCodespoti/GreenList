@@ -15,6 +15,9 @@
   <table id="table">
 
   </table>
+  <br>
+  <button onclick="window.location = window.location">Start New List</button>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>
     let products = [
@@ -94,17 +97,26 @@
     var iterator = 0;
 
     function tipAndAlternative(iterator2) {
-      var item = searchItem(iterator2);
-      var markup = '<tr id="tip' + iterator2 + '" onclick=replaceString(' + iterator2 + ')><td>' + item + '</td></tr>';
+      var item = searchItem(iterator2).suggestion;
+      var tip2 = searchItem(iterator2).tips;
+      var markup = '<tr id="tip' + iterator2 + '" ><td onclick=replaceString(' + iterator2 + ')>' + item + '</td><td>' + tip2 + '</td><td><input type="button" onclick=deleteThing(' + iterator2 + ')></td></tr>';
       if ($('#tip' + iterator2).length === 0) {
         $('#item' + iterator2).after(markup);
         console.log($('#tip' + iterator2).length);
       }
     }
 
+    function deleteThing(iterator2) {
+      $('#tip' + iterator2).find('td:eq(0)').remove();
+      $('#tip' + iterator2).find('td:eq(0)').remove();
+      $('#tip' + iterator2).find('td:eq(0)').remove();
+      $('#tip' + iterator2).remove();
+    }
+    
     function replaceString(iterator2) {
       $('#item' + iterator2).replaceWith(searchItem(iterator2));
       $('#tip' + iterator2).find('td:eq(0)').remove();
+      $('#tip' + iterator2).remove();
     }
 
     function searchItem(iterator2) {
