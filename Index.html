@@ -118,6 +118,7 @@
       $('#tip' + iterator2).find('td:eq(0)').remove();
       $('#tip' + iterator2).find('td:eq(0)').remove();
       $('#tip' + iterator2).remove();
+      $('#item' + iterator).addClass("greenborder");
     }
 
     function searchItem(iterator2) {
@@ -127,6 +128,9 @@
         if (products[i].item == searchValue) {
           return products[i];
         }
+        else {
+          return ["This product has no suggestion!", "This product has no tip!"];
+        }
       }
     };
 
@@ -135,6 +139,9 @@
       itemArray.push(item);
       console.log(itemArray);
       var markup = '<tr id="item' + iterator + '"><td onclick=tipAndAlternative(' + iterator + ')>' + item + '</td><td><button onclick=$(this).parent().parent().remove()>X</button></td><td><input type ="checkbox"></td></tr>';
+      if (searchItem(iterator)) {
+        $('#item' + iterator).addClass("green");
+      }
       $('#table').append(markup)
       iterator++;
     }
