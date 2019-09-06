@@ -134,7 +134,7 @@
       var item = document.getElementById("additem").value;
       itemArray.push(item);
       console.log(itemArray);
-      var markup = '<tr id="item' + iterator + '"><td onclick=tipAndAlternative(' + iterator + ')>' + item + '</td></tr>';
+      var markup = '<tr id="item' + iterator + '"><td onclick=tipAndAlternative(' + iterator + ')>' + item + '</td><td><button onclick=$(this).parent().parent().remove()>X</button></td><td><input type ="checkbox"></td></tr>';
       $('#table').append(markup)
       iterator++;
     }
