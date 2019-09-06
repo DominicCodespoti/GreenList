@@ -202,7 +202,7 @@
         var item = document.getElementById("tags").value;
         itemArray.push(item);
         console.log(itemArray);
-        var markup = '<tr id="item' + iterator + '"><td onclick=tipAndAlternative(' + iterator + ')>' + item + '</td><td><div><button onclick=$(this).parent().parent().remove()>X</button></td><td><input type ="checkbox"></td></tr></div>';
+        var markup = '<tr id="item' + iterator + '"><td onclick=tipAndAlternative(' + iterator + ')>' + item + '</td><td><div><button onclick=$(this).parent().parent().parent().remove()>X</button></td><td><input type ="checkbox"></td></tr></div>';
         $('#table').append(markup)
         if (searchItem(iterator)) {
           $('#item' + iterator).addClass("green");
