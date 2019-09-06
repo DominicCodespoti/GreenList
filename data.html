@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    .ui-helper-hidden-accessible {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+</style>
+
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+
+<body>
+
+    <h1>Product Suggest</h1>
+
+    <script>
+
+
+        let products = [
+            {
+                "item": "Toothbrush",
+                "suggestion": "Bamboo toothbrush"
+            },
+            {
+                "item": "Nappies",
+                "suggestion": "Reusable cloth"
+            },
+            {
+                "item": "Milk",
+                "suggestion": "Glass bottle organic milk"
+            },
+            {
+                "item": "Tea Bags",
+                "suggestion": "Twinnings bags"
+            },
+            {
+                "item": "Coffee Pods",
+                "suggestion": "Ground coffee"
+            },
+            {
+                "item": "Straws",
+                "suggestion": "Paper or metal straws"
+            },
+            {
+                "item": "Eggs",
+                "suggestion": "Free range organic eggs"
+            },
+            {
+                "item": "Dishwashing Liquid",
+                "suggestion": "Earth Choice brand"
+            },
+            {
+                "item": "Oranges",
+                "suggestion": "Buy them loose without the mesh bag"
+            },
+            {
+                "item": "Shampoo and Conditioner",
+                "suggestion": "Sukin brand"
+            },
+            {
+                "item": "Toilet Paper",
+                "suggestion": "icare brand"
+            },
+            {
+                "item": "Party Cups",
+                "suggestion": "Globelet branded biodegradeable cups"
+            },
+            {
+                "item": "Bin Bag",
+                "suggestion": "BioBag bag liners"
+            },
+            {
+                "item": "Cling Wrap",
+                "suggestion": "Beezewax food wrap"
+            },
+            {
+                "item": "Disposable Cutlery",
+                "suggestion": "Ever Eco Bamboo cutlery set"
+            }
+        ];
+
+        //This function fetches the searched item/category from the textbox and shows the suggested product
+        function searchItem() {
+            var searchValue = document.getElementsByName("addItem")[0].value
+
+            for (var i = 0; i < products.length; i++) {
+                if (products[i].item == searchValue) {
+                    document.querySelector('#myDiv').innerHTML = products[i].suggestion;
+                    //return products[i].suggestion;
+                }
+            }
+
+        };
+
+        function createAutocompleteArray() {
+            var productList = [];
+            for (var i = 0; i < products.length; i++) {
+                productList.push(products[i].item);
+            }
+            console.log(productList);
+            return productList;
+        }
+
+        //createAutocompleteArray();
+
+
+        //Autocomplete Testing
+        $(function () {
+            var availableTags = createAutocompleteArray();
+            $("#tags").autocomplete({
+                source: availableTags,
+                messages: {
+                    noResults: '',
+                    results: function () { }
+                }
+            });
+        });
+
+
+    </script>
+    <!-- Autocomplete Testing-->
+    <div class="ui-widget">
+        <label for="tags"></label>
+
+        <input type="text" id="tags" name="addItem" placeholder="Please Enter Your Item (e.g Toothpaste)" size=30>
+        <button onclick="searchItem()" id="searchItemButton">Show the suggestion</button>
+    </div>
+
+    <!-- Where items appear-->
+    <div id="myDiv">
+    </div>
+
+</body>
+
+</html>

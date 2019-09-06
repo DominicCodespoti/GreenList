@@ -12,11 +12,22 @@
   <p>Please enter an item: </p>
   Item Name: <input type="text" id="additem">
   <button onclick="addItem()" id="additembutton"></button>
+
+  <div id="myDiv">
+  </div>
+
+  <div class="ui-widget">
+    <label for="tags"></label>
+
+    <input type="text" id="tags" name="addItem" placeholder="Please Enter Your Item (e.g Toothpaste)" size=30>
+    <button onclick="searchItemAuto()" id="searchItemButton">Show the suggestion</button>
+  </div>
+
   <table id="table" border="1">
 
   </table>
   <br>
-  <button onclick="window.location = window.location">Start New List</button>
+  <button onclick="window.location = window.location">Delete List</button>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>
@@ -96,6 +107,26 @@
     var itemArray = [];
     var iterator = 0;
 
+    function createAutocompleteArray() {
+      var productList = [];
+      for (var i = 0; i < products.length; i++) {
+        productList.push(products[i].item);
+      }
+      console.log(productList);
+      return productList;
+    }
+
+    $(function () {
+      var availableTags = createAutocompleteArray();
+      $("#tags").autocomplete({
+        source: availableTags,
+        messages: {
+          noResults: '',
+          results: function () { }
+        }
+      });
+    });
+
     function tipAndAlternative(iterator2) {
       var item = searchItem(iterator2).suggestion;
       var tip2 = searchItem(iterator2).tips;
@@ -121,15 +152,22 @@
       $('#item' + iterator).addClass("greenborder");
     }
 
+    function searchItemAuto() {
+      var searchValue = document.getElementsByName("addItem")[0].value
+      for (var i = 0; i < products.length; i++) {
+        if (products[i].item == searchValue) {
+          document.querySelector('#myDiv').innerHTML = products[i].suggestion;
+          //return products[i].suggestion;
+        }
+      }
+    };
+
     function searchItem(iterator2) {
       var searchValue = $('#item' + iterator2).find('td:eq(0)').html();
       console.log(searchValue);
       for (var i = 0; i < products.length; i++) {
         if (products[i].item == searchValue) {
           return products[i];
-        }
-        else {
-          return ["This product has no suggestion!", "This product has no tip!"];
         }
       }
     };
