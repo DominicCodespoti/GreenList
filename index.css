@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+/* * { background-color: rgba(255,0,0,.2); }
+* * { background-color: rgba(0,255,0,.2); }
+* * * { background-color: rgba(0,0,255,.2); }
+* * * * { background-color: rgba(255,0,255,.2); }
+* * * * * { background-color: rgba(0,255,255,.2); }
+* * * * * * { background-color: rgba(255,255,0,.2); }
+* * * * * * * { background-color: rgba(255,0,0,.2); }
+* * * * * * * * { background-color: rgba(0,255,0,.2); }
+* * * * * * * * * { background-color: rgba(0,0,255,.2); }
+ */
+html {
+font-family: "Roboto";
+}
+body {
+text-transform: uppercase;
+  text-align:center;
+font-family: "Roboto";
+background-color: #FFF9E2;
+}
+.logo {
+/* height: 50px; */
+  margin: 2em;
+
+/* width: 100px;
+height: 100px; */
+}
+.logo svg {
+height: 10em;
+width: 10em;
+/*   position: fixed; */
+/* height: auto; */
+}
+.contentwrapper {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: center;
+
+}
+.header {
+  
+}
+.adding {
+  margin: 3em 0 3em 0;
+}
+.adding label {
+  font-size:14px;
+}
+.adding
+  input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+button:active { background:green }
+.list {
+/*   margin: 3em 0 3em 0; */
+width: 300px;
+/* height: 300px; */
+  text-align: center;
+}
+
+.list table {
+display: flex;
+/* position: relative;  */
+justify-content: center;
+margin-top: 5em;
+/*   text-align: center; */
+}
+
+tbody {
+display: inline-grid;
+/* flex-direction: space-evenly; */
+}
+
+.list table .greenborder {
+border: 1px solid #9DD2BF; !important
+}
+.list table .green {
+background-color: #9DD2BF; !important
+}
+
+.list table tr {
+
+display: flex;
+justify-content: space-between;
+width: 17em;
+border: 1px solid grey;
+border-radius: 5px;
+padding: 5px;
+background-color: white;
+margin-bottom: 5px;
+}
+
+.list table .tip {
+  display: inline-grid;
+background-color: #9DD2BF;
+}
+
+hr.style-two {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.list p {
+  text-transform: capitalize;
+font-size:12px;
+}
+
+.list h4 {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+      .ui-helper-hidden-accessible {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+
+ul li {
+  list-style: none;
+}
+
+ul {
+/* display: block; */
+width: 40px;
+  background-color: white;
+text-align:left;
+padding: 5px;
+font-size: 12px;
+}
