@@ -177,10 +177,11 @@
       itemArray.push(item);
       console.log(itemArray);
       var markup = '<tr id="item' + iterator + '"><td onclick=tipAndAlternative(' + iterator + ')>' + item + '</td><td><button onclick=$(this).parent().parent().remove()>X</button></td><td><input type ="checkbox"></td></tr>';
+      $('#table').append(markup)
       if (searchItem(iterator)) {
         $('#item' + iterator).addClass("green");
+        console.log($('#item' + iterator));
       }
-      $('#table').append(markup)
       iterator++;
     }
 
