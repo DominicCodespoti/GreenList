@@ -85,15 +85,22 @@
 
     function tipAndAlternative(iterator2) {
       var item = searchItem(iterator2);
-      var markup = '<tr id="tip' + iterator2 + '" onclick=replaceString(' + iterator2 + ')><td>' + item + '</td></tr>';
+      var markup = '<tr id="tip' + iterator2 + '" ><td onclick=replaceString(' + iterator2 + ')>' + item + '</td><td><input type="button" onclick=fuckThis(' + iterator2 + ')></td></tr>';
+      console.log(markup);
       if ($('#tip' + iterator2).length === 0) {
         $('#item' + iterator2).after(markup);
         console.log($('#tip' + iterator2).length);
       }
     }
 
+    function fuckThis(iterator2) {
+      $('#tip' + iterator2).find('td:eq(0)').remove();
+      $('#tip' + iterator2).find('td:eq(0)').remove();
+    }
+
     function replaceString(iterator2) {
       $('#item' + iterator2).replaceWith(searchItem(iterator2));
+      $('#tip' + iterator2).find('td:eq(0)').remove();
       $('#tip' + iterator2).find('td:eq(0)').remove();
     }
 
@@ -111,7 +118,7 @@
       var item = document.getElementById("additem").value;
       itemArray.push(item);
       console.log(itemArray);
-      var markup = '<tr id="item' + iterator + '"onclick=tipAndAlternative(' + iterator + ')><td>' + item + '</td></tr>';
+      var markup = '<tr id="item' + iterator + '"><td onclick=tipAndAlternative(' + iterator + ')>' + item + '</td></tr>';
       $('#table').append(markup)
       iterator++;
     }
