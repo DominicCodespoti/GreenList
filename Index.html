@@ -6,21 +6,32 @@
   <head>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+      .ui-helper-hidden-accessible {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+    </style>
   </head>
 
   <h1>Welcome to Green Grocer!</h1>
-  <p>Please enter an item: </p>
-  Item Name: <input type="text" id="additem">
-  <button onclick="addItem()" id="additembutton"></button>
 
   <div id="myDiv">
   </div>
+
+  <p>Please enter an item:</p>
 
   <div class="ui-widget">
     <label for="tags"></label>
 
     <input type="text" id="tags" name="addItem" placeholder="Please Enter Your Item (e.g Toothpaste)" size=30>
-    <button onclick="searchItemAuto()" id="searchItemButton">Show the suggestion</button>
+    <button onclick="addItem()" id="additembutton"></button>
   </div>
 
   <table id="table" border="1">
@@ -29,7 +40,6 @@
   <br>
   <button onclick="window.location = window.location">Delete List</button>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>
     let products = [
       {
@@ -118,6 +128,7 @@
 
     $(function () {
       var availableTags = createAutocompleteArray();
+      console.log("potato");
       $("#tags").autocomplete({
         source: availableTags,
         messages: {
@@ -174,7 +185,7 @@
     };
 
     function addItem() {
-      var item = document.getElementById("additem").value;
+      var item = document.getElementById("tags").value;
       itemArray.push(item);
       console.log(itemArray);
       var markup = '<tr id="item' + iterator + '"><td onclick=tipAndAlternative(' + iterator + ')>' + item + '</td><td><button onclick=$(this).parent().parent().remove()>X</button></td><td><input type ="checkbox"></td></tr>';
